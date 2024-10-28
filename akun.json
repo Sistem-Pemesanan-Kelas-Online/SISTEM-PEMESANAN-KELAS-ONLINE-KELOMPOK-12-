@@ -1,0 +1,153 @@
+{
+    "admin": {
+      "id": 1,
+      "email": "admin@example.com",
+      "password": "adminPassword123"
+    },
+    "pengajar": [
+      {
+        "id": 1,
+        "nama": "John Doe",
+        "email": "john.doe@example.com",
+        "password": "teacherPassword1",
+        "jadwal_kelas": "Senin, Rabu, Jumat",
+        "mata_kuliah": "Matematika"
+      },
+      {
+        "id": 2,
+        "nama": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "password": "teacherPassword2",
+        "jadwal_kelas": "Selasa, Kamis",
+        "mata_kuliah": "Fisika"
+      },
+      {
+        "id": 3,
+        "nama": "Emily Johnson",
+        "email": "emily.johnson@example.com",
+        "password": "teacherPassword3",
+        "jadwal_kelas": "Senin, Kamis",
+        "mata_kuliah": "Kimia"
+      },
+      {
+        "id": 4,
+        "nama": "Michael Brown",
+        "email": "michael.brown@example.com",
+        "password": "teacherPassword4",
+        "jadwal_kelas": "Rabu, Jumat",
+        "mata_kuliah": "Biologi"
+      },
+      {
+        "id": 5,
+        "nama": "Jessica White",
+        "email": "jessica.white@example.com",
+        "password": "teacherPassword5",
+        "jadwal_kelas": "Selasa, Jumat",
+        "mata_kuliah": "Sejarah"
+      }
+    ],
+    "kelas": [
+      {
+        "id": 1,
+        "mata_kuliah": "Matematika",
+        "jadwal_kelas": "Senin, Rabu, Jumat",
+        "harga_kelas": 300000,
+        "kode_unik": "MAT101"
+      },
+      {
+        "id": 2,
+        "mata_kuliah": "Fisika",
+        "jadwal_kelas": "Selasa, Kamis",
+        "harga_kelas": 250000,
+        "kode_unik": "FIS102"
+      },
+      {
+        "id": 3,
+        "mata_kuliah": "Kimia",
+        "jadwal_kelas": "Senin, Kamis",
+        "harga_kelas": 275000,
+        "kode_unik": "KIM103"
+      },
+      {
+        "id": 4,
+        "mata_kuliah": "Biologi",
+        "jadwal_kelas": "Rabu, Jumat",
+        "harga_kelas": 220000,
+        "kode_unik": "BIO104"
+      },
+      {
+        "id": 5,
+        "mata_kuliah": "Sejarah",
+        "jadwal_kelas": "Selasa, Jumat",
+        "harga_kelas": 200000,
+        "kode_unik": "SEJ105"
+      }
+    ],
+    "murid": [
+      {
+        "id": 1,
+        "nama": "Alice Green",
+        "email": "alice.green@example.com",
+        "password": "studentPassword1",
+        "jadwal_kelas": [
+          {
+            "mata_kuliah": "Matematika",
+            "kode_unik": "MAT101"
+          }
+        ],
+        "saldo_e_money": 500000
+      },
+      {
+        "id": 2,
+        "nama": "Bob Black",
+        "email": "bob.black@example.com",
+        "password": "studentPassword2",
+        "jadwal_kelas": [
+          {
+            "mata_kuliah": "Fisika",
+            "kode_unik": "FIS102"
+          }
+        ],
+        "saldo_e_money": 300000
+      },
+      {
+        "id": 3,
+        "nama": "Charlie Blue",
+        "email": "charlie.blue@example.com",
+        "password": "studentPassword3",
+        "jadwal_kelas": [
+          {
+            "mata_kuliah": "Kimia",
+            "kode_unik": "KIM103"
+          }
+        ],
+        "saldo_e_money": 400000
+      },
+      {
+        "id": 4,
+        "nama": "Diana Red",
+        "email": "diana.red@example.com",
+        "password": "studentPassword4",
+        "jadwal_kelas": [
+          {
+            "mata_kuliah": "Biologi",
+            "kode_unik": "BIO104"
+          }
+        ],
+        "saldo_e_money": 350000
+      },
+      {
+        "id": 5,
+        "nama": "Eva White",
+        "email": "eva.white@example.com",
+        "password": "studentPassword5",
+        "jadwal_kelas": [
+          {
+            "mata_kuliah": "Sejarah",
+            "kode_unik": "SEJ105"
+          }
+        ],
+        "saldo_e_money": 450000
+      }
+    ]
+  }

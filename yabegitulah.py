@@ -1,6 +1,21 @@
 from prettytable import PrettyTable
 import json
 import pwinput
+import os
+
+json_path = r"C:\Users\USER\Latihan\PA Daspro\storage.json"
+
+# Fungsi untuk memuat data dari file JSON
+def load_data():
+    if not os.path.exists(json_path):
+        return []  # Jika file tidak ada, kembalikan list kosong
+    with open(json_path, "r") as jsonstorage:
+        return json.load(jsonstorage)
+
+# Fungsi untuk menyimpan data ke file JSON
+def save_data(data):
+    with open(json_path, "w") as jsonstorage:
+        json.dump(data, jsonstorage, indent=4)
 
 def menu_utama():
     table = PrettyTable()
@@ -22,7 +37,7 @@ def menu_utama():
         try:
             choice = int(input("Pilin menu yang ingin digunakan (1/2/3) = "))
             if choice == 1:
-                menu_admin()
+                masuk_admin()
                 print("Masuk ke menu Admin")
 
             elif choice == 2:
@@ -37,6 +52,16 @@ def menu_utama():
             print("Mohon isi nomor yang benar!")
         except KeyboardInterrupt:
             print("Mohon isi nomor yang benar!")
+
+def masuk_admin():
+    email = input("Masukkan Email anda: ")
+    password = input("Masukkan Password anda: ")
+    
+    data = load_data()  # Memuat data dari JSON
+    for Admin in data.get("admin", []):  # Asumsi data admin disimpan dalam kunci 'admins'
+        if Admin["Email"] == email and Admin["Password"] == password:
+            return True  # Login berhasil
+    return False  # Login gagal
 
 def menu_admin():
     table = PrettyTable()

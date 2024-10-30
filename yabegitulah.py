@@ -5,7 +5,7 @@ import os
 os.system("cls")
 
 tabel_data = PrettyTable()
-tabel_data.field_names = ["No","Kode", "Mata Kulih", "Jadwal", "Harga/Sesi", "Status"]
+tabel_data.field_names = ["No","Kode", "Mata Kuliah", "Jadwal", "Harga/Sesi", "Status"]
 
 jsonkelas = open("D:\STUFF\Visual Code\Python\PA DDP\kelas.json")
 data = json.loads(jsonkelas.read())
@@ -119,7 +119,17 @@ def admin_liat():
     
     print(tabel_data)
 
-#def admin_tambah():
+def admin_tambah():
+    print(tabel_data)
+
+    no_kelas = input("Masukkan nomor kelas: ")
+    nama_kelas = input("Masukkan Nama Kelas: ") 
+    nama_matakuliah = input("Masukkan Nama Mata kuliah: ")
+    harga_kelas = input("Masukkan harga kelas: ")
+    status_kelas = input("Masukkan status kelas: ")
+    tabel_data(no_kelas, nama_kelas, nama_matakuliah, harga_kelas, status_kelas)
+    print(f"\nSelamat!! Nomor Kelas{no_kelas} {nama_kelas} dengan mata kuliah {nama_matakuliah} dan dengan harga {harga_kelas} dengan status {status_kelas} berhasil ditambahkan.")
+    tabel_data
 
 #def admin_baruin():
 

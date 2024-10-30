@@ -1,15 +1,78 @@
-
 {
-    "Nama": [
-
+    "AdminKelas": {
+        "Username": "adminkelas",
+        "PIN": "23121"
+    },
+    "Users": [
+        {
+            "Nama": "Hendri",
+            "Email": "Hendri@gmail.com",
+            "Pin": 12345,
+            "Saldo": "0"
+        },
+        {
+            "Nama": "Hafizh",
+            "Email": "Hafizh@gmail.com",
+            "Pin": 54321,
+            "Saldo": "200000"
+        }
     ],
-    "Email": [
-
-    ],
-    "Password": [
-
-    ],
-    "E-Money": [
-
+    "Kelas": [
+        {
+            "Kode": "KLS1",
+            "Mata_Kuliah": "Dasar Pemrograman",
+            "Jadwal": "Senin 09:00-11:00",
+            "Harga/Sesi": "120000",
+            "Status": "Terisi"
+        },
+        {
+            "Kode": "KLS2",
+            "Mata_Kuliah": "Pengantar Teknologi Informasi",
+            "Jadwal": "Selasa 12:00-14:00",
+            "Harga/Sesi": "125000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS3",
+            "Mata_Kuliah": "Konsep Sistem Informasi",
+            "Jadwal": "Rabu 07:00-09:00",
+            "Harga/Sesi": "135000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS4",
+            "Mata_Kuliah": "Bahasa Inggris",
+            "Jadwal": "Kamis 15:00-17:00",
+            "Harga/Sesi": "145000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS5",
+            "Mata_Kuliah": "Matematika Diskrit",
+            "Jadwal": "Jumat 08:00-10:00",
+            "Harga/Sesi": "150000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS6",
+            "Mata_Kuliah": "Desain UI/UX",
+            "Jadwal": "Kamis 07:00-09:00",
+            "Harga/Sesi": "160000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS7",
+            "Mata_Kuliah": "Komputasi Jaringan",
+            "Jadwal": "Selasa 12:00 - 14:00",
+            "Harga/Sesi": "170000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS8",
+            "Mata_Kuliah": "Sistem Pendukung Keputusan",
+            "Jadwal": "Selasa 15:00 - 17:00",
+            "Harga/Sesi": "165000",
+            "Status": "Kosong"
+        }
     ]
 }

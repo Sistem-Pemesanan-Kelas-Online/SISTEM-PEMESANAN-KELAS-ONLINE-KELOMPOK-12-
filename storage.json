@@ -3,18 +3,24 @@
         "Username": "adminkelas",
         "PIN": "23121"
     },
-    "Users": [
+    "User": [
         {
             "Nama": "Hendri",
-            "Email": "Hendri@gmail.com",
+            "Username": "Hendri980",
             "Pin": 12345,
             "Saldo": "0"
         },
         {
             "Nama": "Hafizh",
-            "Email": "Hafizh@gmail.com",
+            "Username": "Hafizh999",
             "Pin": 54321,
             "Saldo": "200000"
+        },
+        {
+            "Nama": "Mus",
+            "Username": "KangMus",
+            "Pin": 90999,
+            "Saldo": "60000"
         }
     ],
     "Kelas": [
@@ -63,15 +69,43 @@
         {
             "Kode": "KLS7",
             "Mata_Kuliah": "Komputasi Jaringan",
-            "Jadwal": "Selasa 12:00 - 14:00",
+            "Jadwal": "Selasa 12:00-14:00",
             "Harga/Sesi": "170000",
             "Status": "Kosong"
         },
         {
             "Kode": "KLS8",
             "Mata_Kuliah": "Sistem Pendukung Keputusan",
-            "Jadwal": "Selasa 15:00 - 17:00",
+            "Jadwal": "Selasa 15:00-17:00",
             "Harga/Sesi": "165000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS9",
+            "Mata_Kuliah": "Statistika",
+            "Jadwal": "Rabu 19:00-21:00",
+            "Harga/Sesi": "145000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS10",
+            "Mata_Kuliah": "Interaksi Manusia Komputer",
+            "Jadwal": "Selasa 20:00-22:00",
+            "Harga/Sesi": "135000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS11",
+            "Mata_Kuliah": "Manajemen",
+            "Jadwal": "Rabu 20:00-22:00",
+            "Harga/Sesi": "180000",
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS12",
+            "Mata_Kuliah": "Web Developer",
+            "Jadwal": "Sabtu 19:00-21:00",
+            "Harga/Sesi": 150000,
             "Status": "Kosong"
         }
     ]

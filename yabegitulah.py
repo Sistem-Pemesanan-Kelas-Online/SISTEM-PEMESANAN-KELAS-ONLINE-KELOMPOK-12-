@@ -348,7 +348,7 @@ def barui_kelas():
                         if harga.strip() == "":
                             harga = kelas["Harga/Sesi"] 
                             break
-                        harga = int(harga)
+                        harga = str(harga)
                         break
                     except ValueError:
                         print("Masukkan harga yang benar")

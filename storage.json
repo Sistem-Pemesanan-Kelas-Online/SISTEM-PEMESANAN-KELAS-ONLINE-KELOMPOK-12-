@@ -7,20 +7,38 @@
         {
             "Nama": "Hendri",
             "Username": "Hendri980",
-            "Pin": 12345,
+            "Pin": "12345",
             "Saldo": "0"
         },
         {
             "Nama": "Hafizh",
             "Username": "Hafizh999",
-            "Pin": 54321,
+            "Pin": "54321",
             "Saldo": "200000"
         },
         {
             "Nama": "Mus",
             "Username": "KangMus",
-            "Pin": 90999,
+            "Pin": "90999",
             "Saldo": "60000"
+        },
+        {
+            "Nama": "Rezky",
+            "Username": "Tuwir",
+            "Pin": "98787",
+            "Saldo": "80000"
+        },
+        {
+            "Nama": "Rahmad",
+            "Username": "YaRahmad",
+            "Pin": "98678",
+            "Saldo": "70000"
+        },
+        {
+            "Nama": "kaik",
+            "Username": "kaik88",
+            "Pin": "98845",
+            "Saldo": "20000"
         }
     ],
     "Kelas": [
@@ -28,8 +46,8 @@
             "Kode": "KLS1",
             "Mata_Kuliah": "Dasar Pemrograman",
             "Jadwal": "Senin 09:00-11:00",
-            "Harga/Sesi": "120000",
-            "Status": "Terisi"
+            "Harga/Sesi": "150000",
+            "Status": "Kosong"
         },
         {
             "Kode": "KLS2",
@@ -91,21 +109,7 @@
             "Kode": "KLS10",
             "Mata_Kuliah": "Interaksi Manusia Komputer",
             "Jadwal": "Selasa 20:00-22:00",
-            "Harga/Sesi": "135000",
-            "Status": "Kosong"
-        },
-        {
-            "Kode": "KLS11",
-            "Mata_Kuliah": "Manajemen",
-            "Jadwal": "Rabu 20:00-22:00",
-            "Harga/Sesi": "180000",
-            "Status": "Kosong"
-        },
-        {
-            "Kode": "KLS12",
-            "Mata_Kuliah": "Web Developer",
-            "Jadwal": "Sabtu 19:00-21:00",
-            "Harga/Sesi": 150000,
+            "Harga/Sesi": "125000",
             "Status": "Kosong"
         }
     ]

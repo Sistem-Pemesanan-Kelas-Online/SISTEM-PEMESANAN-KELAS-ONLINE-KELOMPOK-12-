@@ -8,37 +8,49 @@
             "Nama": "Hendri",
             "Username": "Hendri980",
             "Pin": "12345",
-            "Saldo": "0"
+            "Saldo": 0,
+            "Kelas": []
         },
         {
             "Nama": "Hafizh",
             "Username": "Hafizh999",
             "Pin": "54321",
-            "Saldo": "200000"
+            "Saldo": 50000,
+            "Kelas": [
+                {
+                    "Kode": "KLS1",
+                    "Mata_Kuliah": "Dasar Pemrograman",
+                    "Jadwal": "Senin 09:00-11:00"
+                }
+            ]
         },
         {
             "Nama": "Mus",
             "Username": "KangMus",
             "Pin": "90999",
-            "Saldo": "60000"
+            "Saldo": 60000,
+            "Kelas": []
         },
         {
             "Nama": "Rezky",
             "Username": "Tuwir",
             "Pin": "98787",
-            "Saldo": "80000"
+            "Saldo": 80000,
+            "Kelas": []
         },
         {
             "Nama": "Rahmad",
             "Username": "YaRahmad",
             "Pin": "98678",
-            "Saldo": "70000"
+            "Saldo": 70000,
+            "Kelas": []
         },
         {
             "Nama": "kaik",
             "Username": "kaik88",
             "Pin": "98845",
-            "Saldo": "20000"
+            "Saldo": 20000,
+            "Kelas": []
         }
     ],
     "Kelas": [
@@ -46,56 +58,56 @@
             "Kode": "KLS1",
             "Mata_Kuliah": "Dasar Pemrograman",
             "Jadwal": "Senin 09:00-11:00",
-            "Harga/Sesi": "150000",
-            "Status": "Kosong"
+            "Harga/Sesi": 150000,
+            "Status": "Terisi"
         },
         {
             "Kode": "KLS2",
             "Mata_Kuliah": "Pengantar Teknologi Informasi",
             "Jadwal": "Selasa 12:00-14:00",
-            "Harga/Sesi": "125000",
+            "Harga/Sesi": 125000,
             "Status": "Kosong"
         },
         {
             "Kode": "KLS3",
             "Mata_Kuliah": "Konsep Sistem Informasi",
             "Jadwal": "Rabu 07:00-09:00",
-            "Harga/Sesi": "135000",
+            "Harga/Sesi": 135000,
             "Status": "Kosong"
         },
         {
             "Kode": "KLS4",
             "Mata_Kuliah": "Bahasa Inggris",
             "Jadwal": "Kamis 15:00-17:00",
-            "Harga/Sesi": "145000",
+            "Harga/Sesi": 145000,
             "Status": "Kosong"
         },
         {
             "Kode": "KLS5",
             "Mata_Kuliah": "Matematika Diskrit",
             "Jadwal": "Jumat 08:00-10:00",
-            "Harga/Sesi": "150000",
+            "Harga/Sesi": 150000,
             "Status": "Kosong"
         },
         {
             "Kode": "KLS6",
             "Mata_Kuliah": "Desain UI/UX",
             "Jadwal": "Kamis 07:00-09:00",
-            "Harga/Sesi": "160000",
+            "Harga/Sesi": 160000,
             "Status": "Kosong"
         },
         {
             "Kode": "KLS7",
             "Mata_Kuliah": "Komputasi Jaringan",
             "Jadwal": "Selasa 12:00-14:00",
-            "Harga/Sesi": "170000",
+            "Harga/Sesi": 170000,
             "Status": "Kosong"
         },
         {
             "Kode": "KLS8",
             "Mata_Kuliah": "Sistem Pendukung Keputusan",
             "Jadwal": "Selasa 15:00-17:00",
-            "Harga/Sesi": "165000",
+            "Harga/Sesi": 165000,
             "Status": "Kosong"
         },
         {
@@ -109,7 +121,14 @@
             "Kode": "KLS10",
             "Mata_Kuliah": "Interaksi Manusia Komputer",
             "Jadwal": "Selasa 20:00-22:00",
-            "Harga/Sesi": "125000",
+            "Harga/Sesi": 125000,
+            "Status": "Kosong"
+        },
+        {
+            "Kode": "KLS11",
+            "Mata_Kuliah": "Web Developing",
+            "Jadwal": "Rabu 20:00-22:00",
+            "Harga/Sesi": 140000,
             "Status": "Kosong"
         }
     ]

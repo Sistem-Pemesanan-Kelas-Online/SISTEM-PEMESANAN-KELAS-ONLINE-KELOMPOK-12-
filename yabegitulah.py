@@ -142,7 +142,12 @@ def tambah_kelas():
     try:
         kodelama = set(kelas["Kode"] for kelas in data.get("Kelas",[]))
         while True:
-            kode = input("Masukkan Kode Kelas (harus diawali dengan 'KLS'): ")
+            
+            kode = input("Masukkan Kode Kelas (harus diawali dengan 'KLS'atau tekan 'batal' untuk kembali): ").upper()
+            if kode.lower() == 'batal':
+                print("Penghapusan kelas dibatalkan.")
+                menu_admin()
+                return
             if not kode.startswith("KLS"):
                 print("Kode kelas harus diawali dengan 'KLS'")
                 continue
@@ -501,6 +506,8 @@ def masuk_pelajar():
 
             for user in data["User"]:
                 if input_username == user["Username"] and input_pin == str(user["Pin"]):
+                    global current_user
+                    current_user = user
                     print("Login berhasil!")
                     menu_pelajar()  
                     return
@@ -519,16 +526,18 @@ def masuk_pelajar():
 def menu_pelajar():
     os.system("cls")
     table = PrettyTable()
-    table.title = "SELAMAT DATANG ADMIN"
+    table.title = f"SELAMAT DATANG {current_user['Nama'].upper()}"
     table.field_names = ["No", "Menu"]
     pilihan_menu = [
         ["1", "Daftar Kelas"],
         ["2", "Beli Kelas"],
-        ["3", "Isi Saldo"],
-        ["4", "Cek Kelas"],
-        ["5", "Kembali"],
-        ["6", "Keluar"]
+        ["3", "Cek Saldo"],
+        ["4", "Isi Saldo"],
+        ["5", "Cek Kelas"],
+        ["6", "Kembali"],
+        ["7", "Keluar"]
     ]
+
     for option in pilihan_menu:
         table.add_row(option)
     while True:
@@ -543,14 +552,17 @@ def menu_pelajar():
                 beli_kelas()
                 
             elif choice == 3:
-                isi_saldo() 
-                
+                cek_saldo()
+
             elif choice == 4:
-                cek_kelas()
+                isi_saldo()
                 
             elif choice == 5:
-                menu_utama()  
+                cek_kelas()
+                
             elif choice == 6:
+                menu_utama()  
+            elif choice == 7:
                 print("Keluar dari program.")
                 exit()  
             else:
@@ -560,5 +572,83 @@ def menu_pelajar():
         except KeyboardInterrupt:
             print("Program dihentikan.")
             exit()
+
+def beli_kelas():
+    os.system("cls")
+    if not data.get("Kelas"):
+        print("Tidak ada kelas yang tersedia untuk dibeli.")
+        input("Tekan Enter untuk kembali ke menu pelajar...")
+        return
+
+    daftar_kelas()
+
+    while True:
+        kode_beli = input("Masukkan kode kelas yang ingin dibeli (atau ketik 'batal' untuk kembali): ").upper()
+
+        if kode_beli.lower() == 'batal':
+            print("Pembelian kelas dibatalkan.")
+            break
+
+        kelas_ditemukan = False
+        for kelas in data["Kelas"]:
+            if kelas["Kode"] == kode_beli:
+                kelas_ditemukan = True
+                if kelas["Status"] == "Terisi":
+                    print(f"Kelas dengan kode {kode_beli} sudah terisi.")
+                    break
+
+                if int(current_user["Saldo"]) >= kelas["Harga/Sesi"]:
+                    current_user["Saldo"] = int(current_user["Saldo"]) - kelas["Harga/Sesi"]
+                    
+                    kelas_info = {
+                        "Kode": kelas["Kode"],
+                        "Mata_Kuliah": kelas["Mata_Kuliah"],
+                        "Jadwal": kelas["Jadwal"]
+                    }
+                    
+                    if "Kelas" not in current_user:
+                        current_user["Kelas"] = []
+                    current_user["Kelas"].append(kelas_info)
+                    
+                    kelas["Status"] = "Terisi"
+                    
+                    simpan()
+                    
+                    invoice = PrettyTable()
+                    invoice.title = "INVOICE PEMBELIAN KELAS"
+                    invoice.field_names = ["Detail", "Informasi"]
+                    invoice.add_row(["Nama Pembeli", current_user["Nama"]])
+                    invoice.add_row(["Nama Kelas", kelas["Mata_Kuliah"]])
+                    invoice.add_row(["Kode Kelas", kelas["Kode"]])
+                    invoice.add_row(["Jadwal", kelas["Jadwal"]])
+                    invoice.add_row(["Harga/Sesi", f"Rp {kelas['Harga/Sesi']}"])
+                    invoice.add_row(["Saldo Awal", f"Rp {int(current_user['Saldo']) + kelas['Harga/Sesi']}"])
+                    invoice.add_row(["Saldo Tersisa", f"Rp {current_user['Saldo']}"])
+                    
+                    print("\nPembelian Berhasil!")
+                    print(invoice)
+                    
+                    input("Tekan Enter untuk kembali ke menu pelajar...")
+                    return
+                else:
+                    print("Saldo Anda tidak cukup untuk membeli kelas ini.")
+                    input("Tekan Enter untuk kembali ke menu pelajar...")
+                    return
+
+        if not kelas_ditemukan:
+            print(f"Kelas dengan kode {kode_beli} tidak ditemukan.")
+            continue
+
+    input("Tekan tombol apapun untuk kembali ke menu pelajar...")
+
+def cek_saldo():
+    os.system("cls")
+
+    saldo_table = PrettyTable()
+    saldo_table.field_names = ["Username", "Saldo"]
+    saldo_table.add_row([current_user['Username'], f"Rp {current_user['Saldo']}"])
+
+    print(saldo_table)
+
 
 menu_utama()

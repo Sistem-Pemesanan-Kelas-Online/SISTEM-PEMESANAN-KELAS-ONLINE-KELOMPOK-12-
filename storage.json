@@ -8,7 +8,7 @@
             "Nama": "Hendri",
             "Username": "Hendri980",
             "Pin": "12345",
-            "Saldo": 0,
+            "Saldo": 200000,
             "Kelas": []
         },
         {
@@ -51,6 +51,19 @@
             "Pin": "98845",
             "Saldo": 20000,
             "Kelas": []
+        },
+        {
+            "Nama": "Sadikin",
+            "Username": "kikin",
+            "Pin": "09876",
+            "Saldo": 60000,
+            "Kelas": [
+                {
+                    "Kode": "KLS11",
+                    "Mata_Kuliah": "Web Developing",
+                    "Jadwal": "Rabu 20:00-22:00"
+                }
+            ]
         }
     ],
     "Kelas": [
@@ -129,7 +142,7 @@
             "Mata_Kuliah": "Web Developing",
             "Jadwal": "Rabu 20:00-22:00",
             "Harga/Sesi": 140000,
-            "Status": "Kosong"
+            "Status": "Terisi"
         }
     ]
 }

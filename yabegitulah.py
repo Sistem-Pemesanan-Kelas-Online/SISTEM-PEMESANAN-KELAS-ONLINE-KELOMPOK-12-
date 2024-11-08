@@ -45,8 +45,9 @@ def menu_utama():
         except ValueError:
             print("Mohon isi dengan angka")
         except KeyboardInterrupt:
-            print("Program dihentikan")
-            exit()
+            print("DILARANG KERAS MENGETIK 'CTRL + C' PAHAM")
+            menu_utama()
+            return
 
 def masuk_admin():
     os.system("cls")
@@ -71,8 +72,9 @@ def masuk_admin():
                 menu_utama()  
                 return  
     except KeyboardInterrupt:
-        print("Program dihentikan.")
-        exit()
+        print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+        masuk_admin()
+        return
 
 def menu_admin():
     os.system("cls")
@@ -116,8 +118,9 @@ def menu_admin():
         except ValueError:
             print("Mohon isi dengan angka")
         except KeyboardInterrupt:
-            print("Program dihentikan")
-            exit()
+            print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+            menu_admin()
+            return
 
 def daftar_kelas():
     os.system("cls")
@@ -205,10 +208,13 @@ def tambah_kelas():
                 print("Gunakan format yang sesuai (contoh: Senin 17:00-18:00)")
                 continue
             
-        try:
-            harga = int(input("Masukkan harga/sesi = "))
-        except ValueError:
-            print("Masukkan harga dengan angka")
+        while True:
+            harga = input("Masukkan harga/sesi = ")
+            if harga.isdigit():
+                harga = int(harga)
+                break
+            else:
+                print("Masukkan harga dengan angka")
         
 
         kelas_baru = {
@@ -223,159 +229,172 @@ def tambah_kelas():
         data["Kelas"].append(kelas_baru)
         simpan()
         print("Kelas baru berhasil ditambah")
-        input("Tekan tombol apapun untuk kembali ke menu admin")
+        input("Tekan tombol enter untuk kembali ke menu admin...")
     except ValueError:
             print("Mohon isi sesuai perintah")
     except KeyboardInterrupt:
-            print("\nProgram dihentikan.")
-            exit()
+            print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+            tambah_kelas()
+            return
 
 def hapus_kelas():
     os.system("cls")
     
-    if not data.get("Kelas"):
-        print("Tidak ada kelas untuk dihapus")
-        input("Tekan tombol apapun untuk kembali ke menu admin")
+    try:
+        if not data.get("Kelas"):
+            print("Tidak ada kelas untuk dihapus")
+            input("Tekan tombol enter untuk kembali ke menu admin...")
+            return
+
+        while True:
+            daftar_kelas() 
+            
+            kode_hapus = input("Masukkan kode kelas yang ingin dihapus (atau ketik 'batal' untuk kembali) = ")
+            if kode_hapus.lower() == 'batal' and 'Batal':
+                print("Penghapusan kelas dibatalkan")
+                break
+
+            kelas_ditemukan = False
+            for kelas in data["Kelas"]:
+                if kelas["Kode"] == kode_hapus:
+                    kelas_ditemukan = True
+                    konfirmasi = input(f"Yakin ingin menghapus kelas {kelas['Mata_Kuliah']} ({kode_hapus})? (y/n) = ")
+                    if konfirmasi == 'y' and 'Y':
+                        data["Kelas"].remove(kelas)
+                        simpan()
+                        print(f"Kelas dengan kode {kode_hapus} berhasil dihapus.")
+                        input("Tekan tombol enter untuk kembali ke menu admin...")
+                        return
+                    elif konfirmasi == 'n' and 'N':
+                        print("Penghapusan kelas dibatalkan.")
+                        menu_admin()
+                        return
+                    else:
+                        print("Jawaban tidak sesuai perintah, mohon ulang")
+                        continue
+
+            if not kelas_ditemukan:
+                print(f"Kelas dengan kode {kode_hapus} tidak ditemukan")
+                continue
+
+        input("Tekan tombol enter untuk kembali ke menu admin...")
+        menu_admin()
+    except KeyboardInterrupt:
+        print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+        hapus_kelas()
         return
-
-    while True:
-        daftar_kelas() 
-        
-        kode_hapus = input("Masukkan kode kelas yang ingin dihapus (atau ketik 'batal' untuk kembali) = ")
-        
-        if kode_hapus.lower() == 'batal' and 'Batal':
-            print("Penghapusan kelas dibatalkan")
-            break
-
-        kelas_ditemukan = False
-        for kelas in data["Kelas"]:
-            if kelas["Kode"] == kode_hapus:
-                kelas_ditemukan = True
-                konfirmasi = input(f"Yakin ingin menghapus kelas {kelas['Mata_Kuliah']} ({kode_hapus})? (y/n) = ")
-                if konfirmasi == 'y' and 'Y':
-                    data["Kelas"].remove(kelas)
-                    simpan()
-                    print(f"Kelas dengan kode {kode_hapus} berhasil dihapus.")
-                    input("Tekan tombol apapun untuk kembali ke menu admin")
-                    return
-                elif konfirmasi == 'n' and 'N':
-                    print("Penghapusan kelas dibatalkan.")
-                    break
-                else:
-                    print("Jawaban tidak sesuai perintah, mohon ulang")
-                    continue
-
-        if not kelas_ditemukan:
-            print(f"Kelas dengan kode {kode_hapus} tidak ditemukan")
-            continue
-
-    input("Tekan tombol apapun untuk kembali ke menu admin")
-    menu_admin()
 
 def barui_kelas():
     os.system("cls")
     
-    if not data.get("Kelas"):
-        print("Tidak ada kelas untuk diperbarui")
-        input("Tekan tombol apapun untuk kembali ke menu admin")
-        return
+    try:
+        if not data.get("Kelas"):
+            print("Tidak ada kelas untuk diperbarui")
+            input("Tekan tombol enter untuk kembali ke menu admin...")
+            return
 
-    while True:
-        daftar_kelas() 
-        
-        kode_edit = input("Masukkan kode kelas yang ingin diperbarui (atau ketik 'batal' untuk kembali) = ")
-        if kode_edit.lower() == 'batal' and 'Batal':
-            print("Pengeditan kelas dibatalkan.")
-            break
+        while True:
+            daftar_kelas() 
+            
+            kode_edit = input("Masukkan kode kelas yang ingin diperbarui (atau ketik 'batal' untuk kembali) = ")
+            if kode_edit.lower() == 'batal' and 'Batal':
+                print("Pengeditan kelas dibatalkan.")
+                break
 
-        kelas_ditemukan = False
-        for kelas in data["Kelas"]:
-            if kelas["Kode"] == kode_edit:
-                kelas_ditemukan = True
-                print(f"Anda sedang mengedit kelas: {kelas['Mata_Kuliah']} ({kode_edit})")
-                
-                while True:
-                    mata_kuliah = input("Masukkan nama mata kuliah baru (tekan enter untuk melewati) = ")
-                    if mata_kuliah.strip() == "":
-                        mata_kuliah = kelas["Mata_Kuliah"]  
-                        break
-                    if any(char.isdigit() for char in mata_kuliah):
-                        print("Mata kuliah tidak boleh ada angka")
-                        continue
-                    if mata_kuliah in set(k["Mata_Kuliah"] for k in data["Kelas"] if k["Kode"] != kode_edit):
-                        print("Mata kuliah sudah ada")
-                    else:
-                        break
-                
-                while True:
-                    jadwal = input("Masukkan jadwal baru (contoh: Senin 10:00-12:00) (tekan enter untuk melewati) = ")
-                    if jadwal.strip() == "":
-                        jadwal = kelas["Jadwal"] 
-                        break
-                    jadwal = jadwal.replace(" - ", "-").replace(" -", "-").replace("- ", "-")
-                    try:
-                        hari, waktu = jadwal.split(" ")
-                        jam_mulai, jam_selesai = waktu.split("-")
-                        
-                        hari_valid = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"]
-                        if hari not in hari_valid:
-                            raise ValueError("Hari tidak valid")
-                        
-                        if len(jam_mulai) != 5 or len(jam_selesai) != 5:
-                            raise ValueError("Format waktu tidak sesuai")
-                        
-                        if jadwal in set(k["Jadwal"] for k in data["Kelas"] if k["Kode"] != kode_edit):
-                            print("Jadwal sudah ada")
+            kelas_ditemukan = False
+            for kelas in data["Kelas"]:
+                if kelas["Kode"] == kode_edit:
+                    kelas_ditemukan = True
+                    print(f"Anda sedang mengedit kelas: {kelas['Mata_Kuliah']} ({kode_edit})")
+                    
+                    while True:
+                        mata_kuliah = input("Masukkan nama mata kuliah baru (tekan enter untuk melewati) = ")
+                        if mata_kuliah.strip() == "":
+                            mata_kuliah = kelas["Mata_Kuliah"]  
+                            break
+                        if any(char.isdigit() for char in mata_kuliah):
+                            print("Mata kuliah tidak boleh ada angka")
+                            continue
+                        if mata_kuliah in set(k["Mata_Kuliah"] for k in data["Kelas"] if k["Kode"] != kode_edit):
+                            print("Mata kuliah sudah ada")
                         else:
                             break
-                        
-                    except ValueError:
-                        print(f"Format jadwal tidak valid")
-                        print("Gunakan format yang sesuai (contoh: Senin 17:00-18:00)")
-                        continue
-
-                while True:
-                    try:
-                        harga = input("Masukkan harga/sesi baru (tekan enter untuk melewati) = ")
-                        if harga.strip() == "":
-                            harga = kelas["Harga/Sesi"] 
+                    
+                    while True:
+                        jadwal = input("Masukkan jadwal baru (contoh: Senin 10:00-12:00) (tekan enter untuk melewati) = ")
+                        if jadwal.strip() == "":
+                            jadwal = kelas["Jadwal"] 
                             break
-                        harga = str(harga)
+                        jadwal = jadwal.replace(" - ", "-").replace(" -", "-").replace("- ", "-")
+                        try:
+                            hari, waktu = jadwal.split(" ")
+                            jam_mulai, jam_selesai = waktu.split("-")
+                            
+                            hari_valid = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"]
+                            if hari not in hari_valid:
+                                raise ValueError("Hari tidak valid")
+                            
+                            if len(jam_mulai) != 5 or len(jam_selesai) != 5:
+                                raise ValueError("Format waktu tidak sesuai")
+                            
+                            if jadwal in set(k["Jadwal"] for k in data["Kelas"] if k["Kode"] != kode_edit):
+                                print("Jadwal sudah ada")
+                            else:
+                                break
+                            
+                        except ValueError:
+                            print(f"Format jadwal tidak valid")
+                            print("Gunakan format yang sesuai (contoh: Senin 17:00-18:00)")
+                            continue
+
+                    while True:
+                            harga = input("Masukkan harga/sesi baru (tekan enter untuk melewati) = ")
+                            if harga.strip() == "":
+                                harga = int(kelas["Harga/Sesi"]) 
+                                break
+
+                            elif harga.isdigit():
+                                harga = int(harga)
+                                break
+                            
+                            else:
+                                print("Masukkan harga dengan benar")
+
+                    while True:
+                        status = input("Masukkan status baru (terisi/kosong), tekan enter untuk melewati): ")
+                        if status.strip() == "":
+                            status = kelas["Status"] 
+                            break
+                        if status not in ["Terisi", "Kosong"]:
+                            print("Harap masukkan status (terisi/kosong)")
+                            continue
                         break
-                    except ValueError:
-                        print("Masukkan harga dengan benar")
-                
-                while True:
-                    status = input("Masukkan status baru (terisi/kosong), tekan enter untuk melewati): ")
-                    if status.strip() == "":
-                        status = kelas["Status"] 
-                        break
-                    if status not in ["Terisi", "Kosong"]:
-                        print("Harap masukkan status (terisi/kosong)")
-                        continue
-                    break
 
-                kelas["Mata_Kuliah"] = mata_kuliah
-                kelas["Jadwal"] = jadwal
-                kelas["Harga/Sesi"] = harga
-                kelas["Status"] = status
-                
-                simpan()
-                print("Kelas berhasil diperbarui")
-                input("Tekan tombol apapun untuk kembali ke menu admin")
-                return
+                    kelas["Mata_Kuliah"] = mata_kuliah
+                    kelas["Jadwal"] = jadwal
+                    kelas["Harga/Sesi"] = harga
+                    kelas["Status"] = status
+                    
+                    simpan()
+                    print("Kelas berhasil diperbarui")
+                    input("Tekan tombol enter untuk kembali ke menu admin...")
+                    return
 
-        if not kelas_ditemukan:
-            print(f"Kelas dengan kode {kode_edit} tidak ditemukan")
-            continue
+            if not kelas_ditemukan:
+                print(f"Kelas dengan kode {kode_edit} tidak ditemukan")
+                continue
 
-    input("Tekan tombol apapun untuk kembali ke menu admin")
+        input("Tekan tombol enter untuk kembali ke menu admin...")
+    except KeyboardInterrupt:
+        print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+        barui_kelas()
+        return
 
 def menuawal_pelajar():
     os.system("cls")
     
     table = PrettyTable()
-    table.title = "MENU PELAJAR"
+    table.title = "LOGIN PELAJAR"
     table.field_names = ["No", "Menu"]
     pilihan_menu = [
         ["1", "Login"],
@@ -409,11 +428,13 @@ def menuawal_pelajar():
         except ValueError:
             print("Mohon isi dengan angka")
         except KeyboardInterrupt:
-            print("Program dihentikan")
-            exit()
+            print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+            menuawal_pelajar()
+            return
 
 def regis():
     os.system("cls")
+
     print("=== Registrasi Akun Pelajar ===")
     try:
         namalama = set(kelas["Nama"] for kelas in data.get("User",[]))
@@ -459,6 +480,7 @@ def regis():
         while True:
             saldo = input("Masukkan saldo pertama kali (minimal 0) = ")
             if saldo.isdigit():
+                saldo = int(saldo)
                 break
             print("Saldo harus berupa angka")
 
@@ -474,11 +496,12 @@ def regis():
 
         simpan()
         print("Akun Pelajar berhasil ditambahkan")
-        input("Tekan tombol apapun untuk kembali ke menu awal pelajar")
+        input("Tekan tombol enter untuk kembali ke menu awal pelajar...")
         menuawal_pelajar()
     except KeyboardInterrupt:
-            print("Program dihentikan")
-            exit()
+        print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+        regis()
+        return
 
 def masuk_pelajar():
     os.system("cls")
@@ -507,8 +530,9 @@ def masuk_pelajar():
                 return
             
     except KeyboardInterrupt:
-        print("Program dihentikan")
-        exit()
+        print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+        masuk_pelajar()
+        return
 
 def menu_pelajar():
     os.system("cls")
@@ -557,71 +581,78 @@ def menu_pelajar():
         except ValueError:
             print("Mohon isi dengan angka")
         except KeyboardInterrupt:
-            print("Program dihentikan")
-            exit()
+            print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+            menu_pelajar()
+            return
 
 def beli_kelas():
     os.system("cls")
-    if not data.get("Kelas"):
-        print("Tidak ada kelas untuk dibeli")
-        input("Tekan tombol apapun untuk kembali ke menu pelajar")
+
+    try:
+        if not data.get("Kelas"):
+            print("Tidak ada kelas untuk dibeli")
+            input("Tekan tombol enter untuk kembali ke menu pelajar...")
+            return
+
+        daftar_kelas()
+
+        while True:
+            kode_beli = input("Masukkan kode kelas yang ingin dibeli (atau ketik 'batal' untuk kembali) = ")
+            if kode_beli.lower() == 'batal' and 'Batal':
+                print("Pembelian kelas dibatalkan")
+                break
+
+            kelas_ditemukan = False
+            for kelas in data["Kelas"]:
+                if kelas["Kode"] == kode_beli:
+                    kelas_ditemukan = True
+                    if kelas["Status"] == "Terisi":
+                        print(f"Kelas dengan kode {kode_beli} sudah terisi")
+                        break
+
+                    if int(pengguna["Saldo"]) >= kelas["Harga/Sesi"]:
+                        pengguna["Saldo"] = int(pengguna["Saldo"]) - kelas["Harga/Sesi"]
+                        
+                        info_kelas = {
+                            "Kode": kelas["Kode"],
+                            "Mata_Kuliah": kelas["Mata_Kuliah"],
+                            "Jadwal": kelas["Jadwal"]
+                        }
+                        
+                        if "Kelas" not in pengguna:
+                            pengguna["Kelas"] = []
+                        pengguna["Kelas"].append(info_kelas)
+                        kelas["Status"] = "Terisi"
+                        simpan()
+
+                        invoice = PrettyTable()
+                        invoice.title = "INVOICE PEMBELIAN KELAS"
+                        invoice.field_names = ["Detail", "Informasi"]
+                        invoice.add_row(["Nama Pembeli", pengguna["Nama"]])
+                        invoice.add_row(["Nama Kelas", kelas["Mata_Kuliah"]])
+                        invoice.add_row(["Kode Kelas", kelas["Kode"]])
+                        invoice.add_row(["Jadwal", kelas["Jadwal"]])
+                        invoice.add_row(["Harga/Sesi", f"Rp {kelas['Harga/Sesi']}"])
+                        invoice.add_row(["Saldo Awal", f"Rp {int(pengguna['Saldo']) + kelas['Harga/Sesi']}"])
+                        invoice.add_row(["Saldo Tersisa", f"Rp {pengguna['Saldo']}"])
+                        print("\nPembelian Berhasil")
+                        print(invoice)
+                        
+                        input("Tekan tombol enter untuk kembali ke menu pelajar...")
+                        return
+                    else:
+                        print("Saldo kurang, mohon isi ulang")
+                        input("Tekan tombol enter untuk kembali ke menu pelajar...")
+                        return
+                    
+            if not kelas_ditemukan:
+                print(f"Kelas dengan kode {kode_beli} tidak ditemukan")
+                continue
+        input("Tekan tombol enter untuk kembali ke menu pelajar...")
+    except KeyboardInterrupt:
+        print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+        beli_kelas()
         return
-
-    daftar_kelas()
-
-    while True:
-        kode_beli = input("Masukkan kode kelas yang ingin dibeli (atau ketik 'batal' untuk kembali) = ")
-        if kode_beli.lower() == 'batal' and 'Batal':
-            print("Pembelian kelas dibatalkan")
-            break
-
-        kelas_ditemukan = False
-        for kelas in data["Kelas"]:
-            if kelas["Kode"] == kode_beli:
-                kelas_ditemukan = True
-                if kelas["Status"] == "Terisi":
-                    print(f"Kelas dengan kode {kode_beli} sudah terisi.")
-                    break
-
-                if int(pengguna["Saldo"]) >= kelas["Harga/Sesi"]:
-                    pengguna["Saldo"] = int(pengguna["Saldo"]) - kelas["Harga/Sesi"]
-                    
-                    info_kelas = {
-                        "Kode": kelas["Kode"],
-                        "Mata_Kuliah": kelas["Mata_Kuliah"],
-                        "Jadwal": kelas["Jadwal"]
-                    }
-                    
-                    if "Kelas" not in pengguna:
-                        pengguna["Kelas"] = []
-                    pengguna["Kelas"].append(info_kelas)
-                    kelas["Status"] = "Terisi"
-                    simpan()
-
-                    invoice = PrettyTable()
-                    invoice.title = "INVOICE PEMBELIAN KELAS"
-                    invoice.field_names = ["Detail", "Informasi"]
-                    invoice.add_row(["Nama Pembeli", pengguna["Nama"]])
-                    invoice.add_row(["Nama Kelas", kelas["Mata_Kuliah"]])
-                    invoice.add_row(["Kode Kelas", kelas["Kode"]])
-                    invoice.add_row(["Jadwal", kelas["Jadwal"]])
-                    invoice.add_row(["Harga/Sesi", f"Rp {kelas['Harga/Sesi']}"])
-                    invoice.add_row(["Saldo Awal", f"Rp {int(pengguna['Saldo']) + kelas['Harga/Sesi']}"])
-                    invoice.add_row(["Saldo Tersisa", f"Rp {pengguna['Saldo']}"])
-                    print("\nPembelian Berhasil")
-                    print(invoice)
-                    
-                    input("Tekan tombol apapun untuk kembali ke menu pelajar")
-                    return
-                else:
-                    print("Saldo kurang, mohon isi ulang")
-                    input("Tekan tombol apapun untuk kembali ke menu pelajar")
-                    return
-                
-        if not kelas_ditemukan:
-            print(f"Kelas dengan kode {kode_beli} tidak ditemukan")
-            continue
-    input("Tekan tombol apapun untuk kembali ke menu pelajar")
 
 def cek_saldo():
     os.system("cls")
@@ -674,7 +705,7 @@ def isi_saldo():
                     simpan()
                     
                     print(f"Saldo berhasil ditambahkan, saldo sekarang = Rp {pengguna['Saldo']}")
-                    input("Tekan tombol apapun untuk kembali ke menu pelajar")
+                    input("Tekan tombol enter untuk kembali ke menu pelajar...")
                     return
                 elif konfirmasi == 'n' and 'N':
                     print("Pengisian saldo dibatalkan")
@@ -687,30 +718,36 @@ def isi_saldo():
         except ValueError:
             print("Mohon masukkan angka")
         except KeyboardInterrupt:
-            print("Program dihentikan")
-            exit()
+            print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+            isi_saldo()
+            return
 
 def cek_kelas():
     os.system("cls")
     
-    if 'Kelas' not in pengguna or not pengguna['Kelas']:
-        print("Belum punya kelas")
-        input("Tekan tombol apapun untuk kembali ke menu pelajar")
-        return
+    try:
+        if 'Kelas' not in pengguna or not pengguna['Kelas']:
+            print("Belum punya kelas")
+            input("Tekan tombol enter untuk kembali ke menu pelajar...")
+            return
 
-    kelas_tabel = PrettyTable()
-    kelas_tabel.title = f"DAFTAR KELAS {pengguna['Nama'].upper()}"
-    kelas_tabel.field_names = ["Kode", "Mata Kuliah", "Jadwal"]
-    
-    for kelas in pengguna['Kelas']:
-        kelas_tabel.add_row([
-            kelas.get("Kode"),
-            kelas.get("Mata_Kuliah"),
-            kelas.get("Jadwal")
-        ])
-    
-    print(kelas_tabel)
-    
-    input("Tekan tombol apapun untuk kembali ke menu pelajar")
+        kelas_tabel = PrettyTable()
+        kelas_tabel.title = f"DAFTAR KELAS {pengguna['Nama'].upper()}"
+        kelas_tabel.field_names = ["Kode", "Mata Kuliah", "Jadwal"]
+        
+        for kelas in pengguna['Kelas']:
+            kelas_tabel.add_row([
+                kelas.get("Kode"),
+                kelas.get("Mata_Kuliah"),
+                kelas.get("Jadwal")
+            ])
+        
+        print(kelas_tabel)
+        
+        input("Tekan tombol enter untuk kembali ke menu pelajar...")
+    except KeyboardInterrupt:
+        print("DILARANG KERAS MENGETIK CTRL + C PAHAM")
+        cek_kelas()
+        return
 
 menu_utama()

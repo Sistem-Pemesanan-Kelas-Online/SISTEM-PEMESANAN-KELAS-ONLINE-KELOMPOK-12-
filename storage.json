@@ -8,8 +8,14 @@
             "Nama": "Hendri",
             "Username": "Hendri980",
             "Pin": "12345",
-            "Saldo": 200000,
-            "Kelas": []
+            "Saldo": 225000,
+            "Kelas": [
+                {
+                    "Kode": "KLS2",
+                    "Mata_Kuliah": "Pengantar Teknologi Informasi",
+                    "Jadwal": "Selasa 12:00-14:00"
+                }
+            ]
         },
         {
             "Nama": "Hafizh",
@@ -64,6 +70,30 @@
                     "Jadwal": "Rabu 20:00-22:00"
                 }
             ]
+        },
+        {
+            "Nama": "samsul",
+            "Username": "samsulsul",
+            "Pin": "33333",
+            "Saldo": 290000
+        },
+        {
+            "Nama": "a",
+            "Username": "a",
+            "Pin": "12345",
+            "Saldo": 190000,
+            "Kelas": [
+                {
+                    "Kode": "KLS3",
+                    "Mata_Kuliah": "Konsep Sistem Informasi",
+                    "Jadwal": "Rabu 07:00-09:00"
+                },
+                {
+                    "Kode": "KLS10",
+                    "Mata_Kuliah": "Interaksi Manusia Komputer",
+                    "Jadwal": "Selasa 20:00-22:00"
+                }
+            ]
         }
     ],
     "Kelas": [
@@ -71,7 +101,7 @@
             "Kode": "KLS1",
             "Mata_Kuliah": "Dasar Pemrograman",
             "Jadwal": "Senin 09:00-11:00",
-            "Harga/Sesi": 150000,
+            "Harga/Sesi": 125000,
             "Status": "Terisi"
         },
         {
@@ -79,14 +109,14 @@
             "Mata_Kuliah": "Pengantar Teknologi Informasi",
             "Jadwal": "Selasa 12:00-14:00",
             "Harga/Sesi": 125000,
-            "Status": "Kosong"
+            "Status": "Terisi"
         },
         {
             "Kode": "KLS3",
             "Mata_Kuliah": "Konsep Sistem Informasi",
             "Jadwal": "Rabu 07:00-09:00",
             "Harga/Sesi": 135000,
-            "Status": "Kosong"
+            "Status": "Terisi"
         },
         {
             "Kode": "KLS4",
@@ -127,7 +157,7 @@
             "Kode": "KLS9",
             "Mata_Kuliah": "Statistika",
             "Jadwal": "Rabu 19:00-21:00",
-            "Harga/Sesi": "145000",
+            "Harga/Sesi": 140000,
             "Status": "Kosong"
         },
         {
@@ -135,13 +165,13 @@
             "Mata_Kuliah": "Interaksi Manusia Komputer",
             "Jadwal": "Selasa 20:00-22:00",
             "Harga/Sesi": 125000,
-            "Status": "Kosong"
+            "Status": "Terisi"
         },
         {
             "Kode": "KLS11",
             "Mata_Kuliah": "Web Developing",
             "Jadwal": "Rabu 20:00-22:00",
-            "Harga/Sesi": 140000,
+            "Harga/Sesi": 150000,
             "Status": "Terisi"
         }
     ]

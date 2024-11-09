@@ -14,6 +14,14 @@ Anggota kelompok:
    NIM: 2409116039
 
 # FLOWCHART
+# Menu awal
+![gambar 1](https://github.com/user-attachments/assets/44f0a097-0ad7-4c6f-bc65-c8e84d574471)
+
+# Menu admin
+![gambar 2](https://github.com/user-attachments/assets/bcb1e935-1a31-424b-b304-c522095d96ad)
+
+# Menu Member
+![gambar 3](https://github.com/user-attachments/assets/cb640e5a-43f6-44a1-9fcd-5ac5690a0ba4)
 
 
 # PENJELASAN MODE ADMIN

@@ -94,13 +94,26 @@
                     "Jadwal": "Selasa 20:00-22:00"
                 }
             ]
+        },
+        {
+            "Nama": "Joko",
+            "Username": "Joko Wi",
+            "Pin": "89888",
+            "Saldo": 350000,
+            "Kelas": [
+                {
+                    "Kode": "KLS9",
+                    "Mata_Kuliah": "Statistika",
+                    "Jadwal": "Rabu 19:00-21:00"
+                }
+            ]
         }
     ],
     "Kelas": [
         {
             "Kode": "KLS1",
             "Mata_Kuliah": "Dasar Pemrograman",
-            "Jadwal": "Senin 09:00-11:00",
+            "Jadwal": "Senin 10:00-12:00",
             "Harga/Sesi": 125000,
             "Status": "Terisi"
         },
@@ -158,7 +171,7 @@
             "Mata_Kuliah": "Statistika",
             "Jadwal": "Rabu 19:00-21:00",
             "Harga/Sesi": 140000,
-            "Status": "Kosong"
+            "Status": "Terisi"
         },
         {
             "Kode": "KLS10",
